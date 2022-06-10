@@ -6,9 +6,10 @@ The repo have been created in relation to an interview with a company called "Ma
 
 Contents:
 
-* Development install
+* Install for development 
+* Running the application in development
 * Development requests
-* Docker
+* Docker build & run
 
 ## Development install
 
@@ -24,7 +25,29 @@ python -m pip install -r requirements-dev.txt
 ## Running the application in development
 
 ```
+docker-compose up -d
 uvicorn app.main:app --reload
+```
+
+**VSCode launch.json for debugging:**
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: FastAPI",
+            "type": "python",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "app.main:app"
+            ],
+            "jinja": true,
+            "justMyCode": true
+        }
+    ]
+}
 ```
 
 ## Development requests (cURL)
@@ -36,7 +59,7 @@ Here are a couple of test `cURL`'s for using the API
 ```
 curl --location --request GET 'localhost:8000/?token=magenta'
 ```
-
+c
 **Admin POST page handler:**
 
 ```
@@ -51,7 +74,7 @@ curl --location --request GET 'localhost:8000/blogs?token=magenta' \
 --header 'x-token: fake-super-secret-magenta-token'
 ```
 
-## Docker
+## Docker build & run
 
 **Building the docker image:**
 

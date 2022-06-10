@@ -4,6 +4,7 @@ services:
 
   db:
     image: postgres:14.3
+    container_name: tapdevdk-fastapi-example-dev
     restart: unless-stopped
     environment:
       POSTGRES_USER: magenta
