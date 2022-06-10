@@ -1,5 +1,6 @@
 import logging
 from fastapi import APIRouter, HTTPException
+from app.repositories.account import get_by_username
 from app.utils import account_get_by_username, db_get_client
 
 logger = logging.getLogger(__name__)
@@ -34,7 +35,7 @@ async def read_accounts():
 async def read_accounts_me():
     # TODO: We have no proper authentication yet, so this is a HACK and should be removed.
     try:
-        return account_get_by_username("test")
+        return get_by_username("test")
     except Exception as e:
         logger.error(e)
         raise HTTPException(status_code=500, detail="Internal Server Error")

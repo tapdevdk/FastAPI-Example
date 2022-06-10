@@ -19,5 +19,5 @@ def account_get_by_username(username: str):
     row = cursor.fetchone()
     cursor.close()
     conn.close()
-    
+
     return row
