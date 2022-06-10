@@ -2,4 +2,3 @@
 -r requirements.txt
 
 # Development specific requirements
-uvicorn==0.17.6
