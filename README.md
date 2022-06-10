@@ -8,10 +8,11 @@ Contents:
 
 * Install for development 
 * Running the application in development
+* Database schema install
 * Development requests
 * Docker build & run
 
-## Development install
+## Install for development
 
 The project have been developed using Python version `3.10.4`:
 
@@ -40,15 +41,24 @@ uvicorn app.main:app --reload
             "type": "python",
             "request": "launch",
             "module": "uvicorn",
+            "justMyCode": true,
             "args": [
                 "app.main:app"
-            ],
-            "jinja": true,
-            "justMyCode": true
+            ]
         }
     ]
 }
 ```
+
+## Database schema install
+
+When the application is up, the database schema can be installed using the following cURL command:
+
+```
+curl --location --request GET 'localhost:8000/admin/db/install?token=magenta' \
+--header 'x-token: fake-super-secret-magenta-token'
+```
+INFO: The file `<path-to-repo>/schema.sql` will be executed on the connected database.
 
 ## Development requests (cURL)
 
@@ -59,7 +69,7 @@ Here are a couple of test `cURL`'s for using the API
 ```
 curl --location --request GET 'localhost:8000/?token=magenta'
 ```
-c
+
 **Admin POST page handler:**
 
 ```

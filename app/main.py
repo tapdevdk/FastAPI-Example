@@ -8,7 +8,6 @@ app = FastAPI(
     dependencies=[Depends(get_query_token)]
 )
 
-
 app.include_router(accounts.router)
 app.include_router(blogs.router)
 app.include_router(admin.router, prefix="/admin", tags=["admin"],
