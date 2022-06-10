@@ -8,15 +8,16 @@ Contents:
 
 * Install for development 
 * Running the application in development
-* Database schema install
+* Database schema install (runtime)
 * Development requests
 * Docker build & run
+* Testing
 
 ## Install for development
 
 The project have been developed using Python version `3.10.4`:
 
-```
+```shell
 cd path/to/repo
 python -m venv venv
 source venv/bin/activate
@@ -25,7 +26,7 @@ python -m pip install -r requirements-dev.txt
 
 ## Running the application in development
 
-```
+```shell
 docker-compose up -d
 uvicorn app.main:app --reload
 ```
@@ -54,7 +55,7 @@ uvicorn app.main:app --reload
 
 When the application is up, the database schema can be installed using the following cURL command:
 
-```
+```shell
 curl --location --request GET 'localhost:8000/admin/db/install?token=magenta' \
 --header 'x-token: fake-super-secret-magenta-token'
 ```
@@ -66,20 +67,20 @@ Here are a couple of test `cURL`'s for using the API
 
 **Root route:**
 
-```
+```shell
 curl --location --request GET 'localhost:8000/?token=magenta'
 ```
 
 **Admin POST page handler:**
 
-```
+```shell
 curl --location --request POST 'localhost:8000/admin?token=magenta' \
 --header 'x-token: fake-super-secret-magenta-token'
 ```
 
 **Get blogs:**
 
-```
+```shell
 curl --location --request GET 'localhost:8000/blogs?token=magenta' \
 --header 'x-token: fake-super-secret-magenta-token'
 ```
@@ -88,14 +89,18 @@ curl --location --request GET 'localhost:8000/blogs?token=magenta' \
 
 **Building the docker image:**
 
-```
+```shell
 cd path/to/repo
 docker build -t thorastrup-fastapi-example .
 ```
 
 **Run the docker image:**
 
-```
+```shell
 docker run -d --name fastapitest -p 8001:80 thorastrup-fastapi-example
 ```
 OBS: Change port `8001` to your liking
+
+## Testing
+
+Not implemented yet.
