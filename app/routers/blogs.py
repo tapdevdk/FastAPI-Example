@@ -1,10 +1,8 @@
 import logging
 from fastapi import APIRouter, Depends, HTTPException
 from app.repositories.account import get_by_username
-from app.repositories.blog import create, get_all, get_by_id, get_by_title, update
+from app.repositories.blog import create, get_all, get_by_id, update
 from app.repositories.blog.models import Blog
-
-from app.utils import db_get_client
 
 from ..dependencies import get_token_header
 
