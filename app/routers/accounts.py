@@ -1,7 +1,7 @@
 import logging
 from fastapi import APIRouter, HTTPException
 from app.repositories.account import get_all, get_by_username
-from app.utils import account_get_by_username, db_get_client
+from app.utils import account_get_by_username
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
@@ -17,9 +17,8 @@ async def read_accounts():
 
 @router.get("/accounts/me", tags=["accounts"])
 async def read_accounts_me():
-    # TODO: We have no proper authentication yet, so this is a HACK and should be removed.
     try:
-        return get_by_username("test")
+        return get_by_username("test") # HACK: The app has no proper authentication. This should be removed
     except Exception as e:
         logger.error(e)
         raise HTTPException(status_code=500, detail="Internal Server Error")
