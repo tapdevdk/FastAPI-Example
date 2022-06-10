@@ -63,9 +63,7 @@ INFO: The file `<path-to-repo>/schema.sql` will be executed on the connected dat
 
 ## Development requests (cURL)
 
-Here are a couple of test `cURL`'s for using the API
-
-**Root route:**
+Here are a couple of test `cURL`'s requests for using the API in development
 
 ```shell
 # Root route
@@ -82,16 +80,9 @@ curl --location --request GET 'localhost:8000/blogs?token=magenta' \
 
 ## Docker build & run
 
-**Building the docker image:**
-
 ```shell
 cd path/to/repo
 docker build -t thorastrup-fastapi-example .
-```
-
-**Run the docker image:**
-
-```shell
 docker run -d --name fastapitest -p 8001:80 thorastrup-fastapi-example
 ```
 OBS: Change port `8001` to your liking
