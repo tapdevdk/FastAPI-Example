@@ -68,19 +68,14 @@ Here are a couple of test `cURL`'s for using the API
 **Root route:**
 
 ```shell
+# Root route
 curl --location --request GET 'localhost:8000/?token=magenta'
-```
 
-**Admin POST page handler:**
-
-```shell
+# Admin POST page handler
 curl --location --request POST 'localhost:8000/admin?token=magenta' \
 --header 'x-token: fake-super-secret-magenta-token'
-```
 
-**Get blogs:**
-
-```shell
+# Get blogs
 curl --location --request GET 'localhost:8000/blogs?token=magenta' \
 --header 'x-token: fake-super-secret-magenta-token'
 ```
