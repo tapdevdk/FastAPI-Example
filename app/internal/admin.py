@@ -1,7 +1,6 @@
 import logging
 import os
 from fastapi import APIRouter, HTTPException
-import psycopg2
 
 from app.settings import Settings
 from app.utils import db_get_client
