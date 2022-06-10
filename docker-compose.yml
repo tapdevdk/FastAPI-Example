@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres:14.3
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: magenta
+      POSTGRES_PASSWORD: magentadev
+      POSTGRES_DB: magenta
+    ports:
+      - "5432:5432"
