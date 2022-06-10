@@ -4,6 +4,7 @@ from fastapi import APIRouter, HTTPException
 import psycopg2
 
 from app.settings import Settings
+from app.utils import db_get_client
 
 settings = Settings()
 router = APIRouter()
@@ -17,7 +18,7 @@ async def update_admin():
 async def install_db():
     conn = None
     try:
-        conn = _get_db_client()
+        conn = db_get_client()
     except Exception as e:
         logger.error(e)
         raise HTTPException(status_code=500, detail="Internal Server Error")
@@ -33,8 +34,3 @@ async def install_db():
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
     return {"message": "Success!"}
-
-
-# PRIVATE stuff
-def _get_db_client():
-    return psycopg2.connect(f"host='{settings.db_host}' dbname='{settings.db_name}' user='{settings.db_username}' password='{settings.db_password}'")
