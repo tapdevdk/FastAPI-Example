@@ -70,13 +70,22 @@ Here are a couple of test `cURL`'s requests for using the API in development
 # Root route
 curl --location --request GET 'localhost:8000/?token=magenta'
 
-# Admin POST page handler
-curl --location --request POST 'localhost:8000/admin?token=magenta' \
+# Get blogs
+curl --location --request GET 'localhost:8000/blogs/?token=magenta' \
 --header 'x-token: fake-super-secret-magenta-token'
 
-# Get blogs
-curl --location --request GET 'localhost:8000/blogs?token=magenta' \
+# Get accounts
+curl --location --request GET 'localhost:8000/accounts/?token=magenta' \
 --header 'x-token: fake-super-secret-magenta-token'
+
+# Authenticate account
+curl --location --request POST 'localhost:8000/accounts/authenticate?token=magenta' \
+--header 'x-token: fake-super-secret-magenta-token' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username": "test",
+    "password": "mypassword"
+}'
 ```
 
 ## Docker build & run

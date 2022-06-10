@@ -1,10 +1,12 @@
+from typing import Optional
 from pydantic import BaseModel
 from datetime import datetime
 
 
 class Account(BaseModel):
-    id: str
+    id: Optional[str]
     username: str
-    email: str
-    created: datetime
-    updated: datetime
+    password: Optional[str]
+    email: Optional[str]
+    created: Optional[datetime]
+    updated: Optional[datetime]

@@ -23,6 +23,23 @@ def get_by_id(id: str, **kwargs):
 def get_by_username(username: str, **kwargs):
     return _get_by_field("username", username, **kwargs)
 
+def get_authenticated_account(account: Account, **kwargs):
+    conn = kwargs.get("conn", db_get_client())
+    cursor = conn.cursor()
+
+    cursor.execute(f"SELECT * FROM {TABLE_NAME} WHERE username = %s AND password = crypt(%s, password)", (
+        account.username,
+        account.password
+    ))
+
+    row = cursor.fetchone()
+
+    cursor.close()
+    if KWARG_DB_CONNECTION not in kwargs:
+        conn.close()
+    
+    return _map_row_to_account(row)
+
 # PRIVATE methods
 
 def _get_by_field(field: str, value: str, **kwargs):
@@ -39,7 +56,10 @@ def _get_by_field(field: str, value: str, **kwargs):
     
     return _map_row_to_account(row)
 
-def _map_row_to_account(row):
+def _map_row_to_account(row) -> Account | None:
+    if row is None:
+        return None
+
     return Account(
         id=row['id'],
         username=row['username'],
