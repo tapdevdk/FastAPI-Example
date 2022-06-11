@@ -23,13 +23,13 @@ def get_by_id(id: str, **kwargs):
 def get_by_username(username: str, **kwargs):
     return _get_by_field("username", username, **kwargs)
 
-def get_authenticated_account(account: Account, **kwargs):
+# def get_authenticated_account(account: Account, **kwargs):
+def get_authenticated_account(username: str, password: str, **kwargs):
     conn = kwargs.get("conn", db_get_client())
     cursor = conn.cursor()
 
     cursor.execute(f"SELECT * FROM {TABLE_NAME} WHERE username = %s AND password = crypt(%s, password)", (
-        account.username,
-        account.password
+        username, password
     ))
 
     row = cursor.fetchone()

@@ -44,9 +44,9 @@ async def read_user(username: str):
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 @router.post("/authenticate")
-async def read_accounts(account: Account):
+async def auth_account(account: Account):
     try:
-        acc = get_authenticated_account(account)
+        acc = get_authenticated_account(account.username, account.password)
         if not acc:
             raise HTTPException(status_code=401, detail="Unauthorized")
 
