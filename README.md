@@ -111,7 +111,7 @@ OBS: Its import to use the `python -m`-prefix, in order for pytest to import the
 
 **VSCode launch.json config:**
 
-```
+```json
 {
     "version": "0.2.0",
     "configurations": [
