@@ -3,8 +3,6 @@
 This is an example repo for creating a FastAPI application, using their "Bigger Application" structure as a template and then
 made into a more functional application with postgres, docker etc.
 
-The repo have been created in relation to an interview with a company called "Magenta".
-
 Contents:
 
 * Install for development 
