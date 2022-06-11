@@ -1,7 +1,7 @@
 # FastAPI Example
 
 This is an example repo for creating a FastAPI application, using their "Bigger Application" structure as a template and then
-made into a more functional application with postgres, docker etc.
+made into a more interesting application with postgres, docker etc.
 
 Contents:
 
