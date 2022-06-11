@@ -107,7 +107,7 @@ source venv/bin/activate
 python -m pytest tests
 ```
 
-OBS: Its import to use the `python -m`-prefix, in order for the tests to locate the app-module.
+OBS: Its import to use the `python -m`-prefix, in order for pytest to import the app-module.
 
 **VSCode launch.json config:**
 

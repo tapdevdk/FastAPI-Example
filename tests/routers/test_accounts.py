@@ -22,7 +22,6 @@ def test_read_accounts(mocked_get_all: MagicMock):
     assert response.status_code == 200
     assert response_accounts == test_accounts
 
-
 @patch('app.routers.accounts.get_by_auth_token')
 def test_read_accounts_me(mocked_get_by_auth_token: MagicMock):
     test_acc = get_test_account()
