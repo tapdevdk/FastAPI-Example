@@ -99,4 +99,32 @@ OBS: Change port `8001` to your liking
 
 ## Testing
 
-Not implemented yet.
+Execute the following commands to run the tests:
+
+```shell
+cd path/to/repo
+source venv/bin/activate
+python -m pytest tests
+```
+
+OBS: Its import to use the `python -m`-prefix, in order for the tests to locate the app-module.
+
+**VSCode launch.json config:**
+
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Testing",
+            "type": "python",
+            "request": "launch",
+            "module": "pytest",
+            "justMyCode": true,
+            "args": [
+                "tests"
+            ],
+        },
+    ]
+}
+```
