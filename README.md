@@ -50,7 +50,7 @@ uvicorn app.main:app --reload
 }
 ```
 
-## Database schema install
+## Database schema install (runtime)
 
 When the application is up, the database schema can be installed using the following cURL command:
 
@@ -59,6 +59,10 @@ curl --location --request GET 'localhost:8000/admin/db/install?token=magenta' \
 --header 'x-token: fake-super-secret-magenta-token'
 ```
 INFO: The file `<path-to-repo>/schema.sql` will be executed on the connected database.
+
+**IMPORTANT!**
+
+The `/admin/db/install`-route was implemented as a quick and dirty way to implement the database schema. We would not recommend doing this in any production environments, and should ultimatly be removed from sunch environments.
 
 ## Development requests (cURL)
 
