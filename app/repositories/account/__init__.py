@@ -40,6 +40,10 @@ def get_authenticated_account(account: Account, **kwargs):
     
     return _map_row_to_account(row)
 
+def get_by_auth_token(auth_token: str) -> Account:
+    # HACK: The app has no proper authentication. This should be removed
+    return get_by_username("test")
+
 # PRIVATE methods
 
 def _get_by_field(field: str, value: str, **kwargs):
