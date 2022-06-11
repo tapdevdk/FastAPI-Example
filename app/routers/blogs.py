@@ -1,6 +1,6 @@
 import logging
-from fastapi import APIRouter, Depends, HTTPException
-from app.repositories.account import get_by_username
+from fastapi import APIRouter, Depends, HTTPException, Header
+from app.repositories.account import get_by_auth_token, get_by_username
 from app.repositories.blog import create, get_all, get_by_id, update
 from app.repositories.blog.models import Blog
 
@@ -32,9 +32,9 @@ async def read_blog(blog_id: str):
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 @router.post("/")
-async def create_blog(new_blog: Blog):
+async def create_blog(new_blog: Blog, x_token: str = Header()):
     try:
-        created_by_acc = get_by_username("test") # HACK: The app has no proper authentication. This should be removed
+        created_by_acc = get_by_auth_token(x_token)
         new_blog.created_by = created_by_acc.id
         return create(new_blog)
     except Exception as e:

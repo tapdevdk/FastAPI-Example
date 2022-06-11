@@ -22,7 +22,7 @@ async def read_accounts():
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 @router.get("/me")
-async def read_accounts_me(x_token: Union[str, None] = Header(default=None)):
+async def read_accounts_me(x_token: str = Header()):
     try:
         return get_by_auth_token(x_token).dict(exclude_none=True) # HACK: The app has no proper authentication. This should be removed
     except Exception as e:
