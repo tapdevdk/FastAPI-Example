@@ -99,6 +99,18 @@ docker run -d --name fastapitest -p 8001:80 thorastrup-fastapi-example
 ```
 OBS: Change port `8001` to your liking
 
+**NOTE:**
+
+We do not configure anything about the network in above commands.
+So if you are running this docker container on your local development computer and you want it to connect to your development PostgreSQL database,
+you will ned to specify the `DB_HOSTNAME`-environment variable, ex `192.168.0.137`:
+
+```shell
+docker run -e DB_HOSTNAME=<your-local-ip> -d --name fastapitest -p 8001:80 thorastrup-fastapi-example
+```
+
+or of course configure the network part differently :-)
+
 ## Testing
 
 Execute the following commands to run the tests:
