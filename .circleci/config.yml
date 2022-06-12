@@ -110,6 +110,7 @@ workflows:
           filters:
             tags:
               only: /^[\d]+\.[\d]+\.[\d]+/
+              # only: /^v.*/
             branches:
               ignore: /.*/
       - publish-tag:
@@ -120,5 +121,6 @@ workflows:
           filters:
             tags:
               only: /^[\d]+\.[\d]+\.[\d]+/
+              # only: /^v.*/
             branches:
               ignore: /.*/
