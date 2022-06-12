@@ -109,7 +109,7 @@ workflows:
             - tapdev-prod
           filters:
             tags:
-              only: /^[\d]+\.[\d]+\.[\d]+/
+              only: /^[0-9]+\.[0-9]+\.[0-9]+/
               # only: /^v.*/
             branches:
               ignore: /.*/
@@ -120,7 +120,7 @@ workflows:
             - build
           filters:
             tags:
-              only: /^[\d]+\.[\d]+\.[\d]+/
+              only: /^[0-9]+\.[0-9]+\.[0-9]+/
               # only: /^v.*/
             branches:
               ignore: /.*/
