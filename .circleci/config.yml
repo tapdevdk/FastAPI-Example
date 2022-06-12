@@ -3,7 +3,7 @@ version: 2.1
 executors:
   docker-publisher:
     environment:
-      IMAGE_NAME: tapdevdk/FastAPI-Example # Docker Hub repo
+      IMAGE_NAME: tapdevdk/fastapi-example # Docker Hub repo
     docker:
       - image: docker:20.10.14-git
 
