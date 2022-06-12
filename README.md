@@ -142,3 +142,17 @@ OBS: Its import to use the `python -m`-prefix, in order for pytest to import the
     ]
 }
 ```
+
+## CI/CD
+
+The applications CI/CD, is maintained by the CircleCI and the config can be found in `.circleci/config.yml`.
+
+**Workflows:**
+
+* build-publish-latest
+    * Triggers on all updates to `main`-branch
+    * Builds the latest `main`-branch and pushes it to docker-hub with tag: `latest`
+* build-publish-tag
+    * Triggers on created tags with the format: `{integer}.{integer}.{integer}`
+    * Builds the newly created tag and pushes it to docker-hub with the tag: `<newly-created-git-tag>` AND `latest`
+        * Not sure about pushing it to the `latest`-tag, but the idea was that this tag should also contain the latest build. But i would say it could be argumented that it should just be the latest build of the `main`-branch.
