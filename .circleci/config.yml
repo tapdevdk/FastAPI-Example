@@ -84,7 +84,6 @@ jobs:
 workflows:
   version: 2
 
-  # TODO: Remove this and use below commented version. its for development of the CircleCI config
   build-publish-latest:
     jobs:
       - build:
