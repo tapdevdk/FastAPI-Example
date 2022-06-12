@@ -83,23 +83,42 @@ jobs:
 
 workflows:
   version: 2
-  build-publish-tag:
+
+  # TODO: Remove this and use below commented version. its for development of the CircleCI config
+  build-publish-latest:
     jobs:
       - build:
           context:
             - tapdev-prod
           filters:
-            tags:
-              only: /^[\d]+\.[\d]+\.[\d]+/
             branches:
-              ignore: /.*/
-      - publish-tag:
+              only: main
+      - publish-latest:
           context:
             - tapdev-prod
           requires:
             - build
           filters:
-            tags:
-              only: /^[\d]+\.[\d]+\.[\d]+/
             branches:
-              ignore: /.*/
+              only: main
+
+  # build-publish-tag:
+  #   jobs:
+  #     - build:
+  #         context:
+  #           - tapdev-prod
+  #         filters:
+  #           tags:
+  #             only: /^[\d]+\.[\d]+\.[\d]+/
+  #           branches:
+  #             ignore: /.*/
+  #     - publish-tag:
+  #         context:
+  #           - tapdev-prod
+  #         requires:
+  #           - build
+  #         filters:
+  #           tags:
+  #             only: /^[\d]+\.[\d]+\.[\d]+/
+  #           branches:
+  #             ignore: /.*/
