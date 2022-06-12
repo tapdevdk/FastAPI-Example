@@ -11,6 +11,7 @@ Contents:
 * Development requests
 * Docker build & run
 * Testing
+* CI/CD
 
 ## Install for development
 
