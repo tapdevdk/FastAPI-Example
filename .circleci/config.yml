@@ -102,23 +102,23 @@ workflows:
             branches:
               only: main
 
-  # build-publish-tag:
-  #   jobs:
-  #     - build:
-  #         context:
-  #           - tapdev-prod
-  #         filters:
-  #           tags:
-  #             only: /^[\d]+\.[\d]+\.[\d]+/
-  #           branches:
-  #             ignore: /.*/
-  #     - publish-tag:
-  #         context:
-  #           - tapdev-prod
-  #         requires:
-  #           - build
-  #         filters:
-  #           tags:
-  #             only: /^[\d]+\.[\d]+\.[\d]+/
-  #           branches:
-  #             ignore: /.*/
+  build-publish-tag:
+    jobs:
+      - build:
+          context:
+            - tapdev-prod
+          filters:
+            tags:
+              only: /^[\d]+\.[\d]+\.[\d]+/
+            branches:
+              ignore: /.*/
+      - publish-tag:
+          context:
+            - tapdev-prod
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^[\d]+\.[\d]+\.[\d]+/
+            branches:
+              ignore: /.*/
